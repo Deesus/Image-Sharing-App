@@ -43,7 +43,7 @@ Users must sign in before they can add/edit/delete albums and images. However, t
 ### What's included
 Inside the **Image Sharing App** directory, you'll find the following files:
 ```
-image_sharing_app/
+Image-Sharing-App/
     ├── create_database.sql
     ├── start_server.py
     ├── client_secrets.json
