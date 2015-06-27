@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<!-- Bootstrap -->
+	<link rel='stylesheet' type='text/css' href="{{ url_for('static', filename='bootstrap.css') }}"/>
+	<!-- Font Awesome Icons -->
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"/>
+	<!-- Custom CSS (overrides Bootstrap) -->
+	<link rel='stylesheet' type='text/css' href="{{ url_for('static', filename='style.css') }}"/>
+</head>
+
+<body>
+	<!-- header -->
+
+	<!-- header title -->
+	<div class="row album-header">
+		<div class="col-md-12">
+			<h1 class='text-center'>Edit Image: {{item.name}}</h1>
+		</div>
+	</div>
+	<!-- login button -->
+	<div class="row header-login">
+		<div class="col-xs-12 logged-in">
+			<h4>
+				<span style="vertical-align:middle">Logged in &nbsp;</span><a href="{{ url_for('gdisconnect') }}" class="top-menu-cell" target="_blank"><i class="fa fa-sign-out"></i></a>
+			</h4>
+		</div>
+	</div>
+
+	<div class="line"></div>
+
+	<!-- top bar options-->
+	<div class="row top-menu">	
+		<div class="col-md-12">
+			<a href="{{ url_for('show_albums') }}" class="top-menu-cell text-center">Main</a>
+			<a href="{{ url_for('show_images', album_id=album_id) }}" class="top-menu-cell text-center">Back to Album</a>
+		</div>
+	</div>
+
+	<!-- form input -->
+	<!-- container for form - entire form is 7 columns wide -->
+	<div class = 'pane'>
+		<div class="pane center-block col-md-7">
+			<form action="{{ url_for('edit_image', album_id=album_id, image_id=item.id) }}" method='POST' enctype='multipart/form-data'>
+
+				<!-- HTML form fields -->
+				<div class="row">Edit Name:</div>
+				<div class="row">
+					<div class="col-xs-4">
+						<input type='text' size='30' name='itemName' placeholder="{{item.name}}">
+					</div>
+				</div>
+
+				<div class="row">Edit Description:</div>
+				<div class="row">
+					<div class="col-xs-4">
+						<textarea name='itemText' rows="3" placeholder="{{item.description}}"></textarea>
+					</div>
+				</div>
+
+				<!-- submit/cancel buttons -->
+				<div class="row">
+					<div class="col-xs-2"><input type='submit' value='Submit' class="dee-button btn-yellow"></div>
+					<div class="col-xs-2"><a href="{{ url_for('show_images', album_id=album_id) }}" class="dee-button">cancel</a></div>
+				</div>
+
+			</form>
+		</div>
+	</div>
+</body>
+
+</html>

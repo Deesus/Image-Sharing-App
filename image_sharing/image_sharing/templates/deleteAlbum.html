@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<!-- Bootstrap -->
+	<link rel='stylesheet' type='text/css' href="{{ url_for('static', filename='bootstrap.css') }}"/>
+	<!-- Font Awesome Icons -->
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"/>
+	<!-- Custom CSS (overrides Bootstrap) -->
+	<link rel='stylesheet' type='text/css' href="{{ url_for('static', filename='style.css') }}"/>
+</head>
+
+<body>
+	<!-- header -->
+
+	<!-- header title -->
+	<div class="row album-header">
+		<div class="col-md-12">
+			<h1 class='text-center'>Delete Album</h1>
+		</div>
+	</div>
+
+	<!-- login button -->
+	<div class="row header-login">
+		<div class="col-xs-12 logged-in">
+			<h4>
+				<span style="vertical-align:middle">Logged in &nbsp;</span><a href="{{ url_for('gdisconnect') }}" class="top-menu-cell" target="_blank"><i class="fa fa-sign-out"></i></a>
+			</h4>
+		</div>
+	</div>
+
+	<div class="line"></div>
+
+	<!-- top bar options-->
+	<div class="row top-menu">	
+		<div class="col-md-12">
+			<a href="{{ url_for('show_albums') }}" class="top-menu-cell text-center">Main</a>
+			<a href="{{ url_for('show_images', album_id=album.id) }}" class="top-menu-cell text-center">Back to Album</a>
+		</div>
+	</div>
+
+	<!-- form input -->
+	<div class = 'pane'>
+		<div class="pane center-block col-md-7">
+			<form action="{{ url_for('delete_album', album_id=album.id) }}" method='POST'>
+				<div class="row">Are you sure you want to delete {{album.name}}?</div><br/><br/>
+
+				<!-- submit/cancel buttons -->
+				<div class="row">
+					<div class="col-xs-2">
+						<input type='submit' value='delete' class="dee-button btn-yellow">
+					</div>
+					<div class="col-xs-2">
+						<a href="{{ url_for('show_albums') }}" class="dee-button">cancel</a>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+
+</html>

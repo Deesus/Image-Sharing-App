@@ -1,0 +1,64 @@
+<html>
+
+<head>
+	<link rel='stylesheet' type='text/css' href="{{ url_for('static', filename='style.css') }}"/>
+
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+	<script src="//apis.google.com/js/platform.js?onload=start"> </script>
+</head>
+
+	<body>
+		<!-- GOOGLE PLUS SIGN IN-->
+		<div id='signinButton'>
+			<span class='g-signin'
+				data-scope='openid email'
+				data-clientid="714714590510-hlevrtcbacq57cnnnqo6hucr8vcqn4gu.apps.googleusercontent.com"
+				data-redirecturi='postmessage'
+				data-accesstype="offline"
+				data-cookiepolicy="single_host_origin"
+				data-callback="signInCallback">
+				<img src='/static/g_plus_logo.png' width="30" height="30" alt="Goolge+ Login"><span class='login-text'>Log in using Google
+			</span>
+
+		</div>
+
+		<!-- we can populate addiontal sever-to-user info here -->
+		<div id="result"></div>
+
+		<script>
+			function signInCallback(authResult) {
+				if (authResult['code']) {
+					//if authorized, hide sign-in button:
+					$('#signinButton').attr('style', 'display: none');
+					
+					//send the 1-time code to server, if server responds, write 'login successful' message
+					//to webpage and redirect to main albums page
+					//use jQuery to create ajax call to pass the 1-time code that google gave to client to the server
+					$.ajax({	
+						type:'POST',
+						url: '/gconnect?state={{STATE}}', 	//pass servers' state token (as cross-refrencet to prevent attack)
+						processData: false,					//we tell jQuery not to process the response into a string 
+						contentType: 'application/octet-stream; charset-utf-8',
+						data: authResult['code'],			//specify the data we will send to server
+
+						//when we recieve '200' - a successful response, return successful login message to user:
+						success: function(result){
+							if(result) {
+								//wait 2 miliseconds, then redirect:
+								setTimeout(function(){
+									window.location.href = "/albums";
+								}, 2);
+							} else if (authResult['error']){
+								//notify user or error:
+								$('#result').html('An error occured: ' + authResult['error']);
+								console.log('There was an error: ' + authResult['error']);
+							} else {
+								$('#result').html('Failed to make a server-side call. Check your configuration and console.');
+							}
+						}
+					});
+				}
+			}
+		</script>
+	</body>
+</html>

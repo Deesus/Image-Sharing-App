@@ -1,0 +1,243 @@
+/******************
+* 		General
+*******************/
+h1 {
+	font-weight: normal !important;
+}
+
+p {
+	font-size: 1.1em !important;
+}
+
+body {
+	font-family: 'Century Gothic', monospace !important;
+}
+
+.pane {
+	float: none !important;
+	padding: 30px !important;
+	border: 0px;
+	border-radius: 25px;
+}
+
+a {
+	text-decoration: none !important;
+	color: #343c3f !important;
+}
+
+a:hover {
+	color: black !important;
+}
+
+/******************
+* 		Forms
+*******************/
+input {
+	width: 100% !important;
+}
+
+textarea {
+	resize: none;
+
+	width: 100%;
+	box-sizing: border-box;         /* Opera/IE 8+ */
+	-moz-box-sizing: border-box;    /* Firefox */
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+}
+
+/******************
+* 		Header
+*******************/
+.album-header {
+	height: 128px;
+	color: white;
+	background-color: #d9534f; 
+	border-bottom: none;
+	margin-bottom: none;
+}
+
+.line {
+	width: 100%;
+	margin: none;
+	border: none;
+	height: 2px;
+	background-repeat: repeat-x;
+	background-image: url("/static/header_line.png");
+}
+
+.header-login{
+	text-align: right;
+	background-color: #d9534f;
+	height: 40px;
+}
+
+.top-menu {
+	height: 30px;
+	background-color: #d9534f;
+}
+
+.top-menu-cell {
+	vertical-align:middle;
+	color: #fbaeac !important;
+	padding: 0px 10px 0px 10px;
+}
+
+.top-menu-cell:hover {
+	color: white !important;
+}
+
+.logged-in {
+
+	color: #fbaeac !important;
+	padding-right: 5%;
+}
+
+/******************
+* 	  Image Tile
+*******************/
+.image-tile {
+	max-height: 300px;
+	min-height: 300px;
+	margin-bottom: 20px;
+	padding-top: 20px;
+	background-color: white;
+	transition: all 0.8s ease;
+}
+.image-tile:hover {
+	background-color: #c2ced8;
+	transition: all 0.8s ease;
+}
+
+/******************
+*    Album Block
+*******************/
+.album-block {
+	display:block !important;
+	width:50% !important;
+	padding: 20px;
+	background-color: white;
+	transition: all 0.8s ease;
+	border-radius: 15px;
+	font-size: 1.1em;
+}
+
+.album-block:hover {
+	background-color: #c2ced8;
+	transition: all 0.8s ease;
+}
+
+/******************
+* 		Buttons
+*******************/
+.dee-button {
+	/* sets to block */
+	display:block !important;				
+	width:100% !important;
+
+	/* text: white, no hover decoration */
+	color: white !important;
+	text-decoration: none !important;
+
+	background-color: #d9534f;
+	display:inline-block;
+	padding:6px 12px;
+	margin-bottom:0;
+	font-size:0.9em;
+	font-weight:400;
+	line-height:1.42857143;
+	text-align:center;
+	white-space:nowrap;
+	vertical-align:middle;
+	-ms-touch-action:manipulation;
+	touch-action:manipulation;
+	cursor:pointer;
+	-webkit-user-select:none;
+	-moz-user-select:none;
+	-ms-user-select:none;
+	user-select:none;
+	background-image:none;
+	border:1px solid transparent;
+	border-radius:4px;
+}
+.dee-button:hover {
+	background-color: #cc3333;
+	color: white !important;
+}
+
+.btn-yellow{
+	background-color: #f0ad4e !important;
+	color: white !important;
+}
+.btn-yellow:hover {
+	background-color: #ff9900 !important;
+	color: white !important;
+}
+
+.btn-green{
+	background-color: #5cb85c !important;
+	color: white !important;
+}
+.btn-green:hover {
+	background-color: #339933 !important;
+	color: white !important;
+}
+
+/******************
+* 		Login
+*******************/
+#signinButton {
+	margin: 10px;
+	padding: 4px;
+	border-width: 1px;
+	border-color: gray;
+	border-style: solid;
+	width: 22%;
+	background-color: white;
+}
+
+#signinButton img {
+	padding: 0px;
+	vertical-align: bottom;
+}
+
+.login-text {
+	margin-left: 50px;
+	padding: 0px;
+	font-size: 1.25em;
+}
+
+/******************
+* 		Misc.
+*******************/
+.col-xs-4 {
+	padding: 2px !important;
+}
+
+.col-xs-2 {
+	padding: 2px !important;
+}
+
+.fa-camera-retro {
+	font-size: 100px;
+}
+
+.fa-plus {
+	font-size: 16px;
+}
+
+.fa-trash-o {
+	font-size: 18px;
+	margin-left: 20px;
+}
+
+.fa-pencil {
+	font-size: 18px;
+	margin-right: 20px;
+}
+
+/* to vertically center content */
+.center-y {
+	
+	top: 50%;
+	transform: translateY(50%);
+}
