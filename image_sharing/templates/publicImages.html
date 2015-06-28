@@ -39,7 +39,6 @@
 		</div>
 	</div>
 
-
 	<!-- main -->
 	<div class='pane'>
 
@@ -53,13 +52,14 @@
 			{% endif %}
 		{% endwith %}
 
-
 		<!-- display image items -->
 		{% for image in images %}
 			<div class='image-tile col-md-6 col-lg-4 image-tile text-center'>
 				<!-- image -->
 				{% if image.file_name %}
-					<img src="{{ url_for('media', album_id=album.id, file_name=image.file_name) }}" width="auto" height="180"/><br/>
+					<a href="{{ url_for('media', album_id=album.id, file_name=image.file_name) }}" target="_blank">
+						<img src="{{ url_for('media', album_id=album.id, file_name=image.file_name) }}" width="auto" height="180"/><br/>
+					</a>
 				{% endif %}
 				<br/>
 				<!-- name and description fields -->
@@ -68,8 +68,6 @@
 
 			</div>
 		{% endfor %}
-
-
 
 		<!-- the 'add new image' is the last image-tile -->
 		<div class='image-tile col-md-6 col-lg-4 image-tile text-center'>
@@ -86,8 +84,6 @@
 				</a>
 			</div>
 		</div>
-
-
 
 	</div>
 </body>

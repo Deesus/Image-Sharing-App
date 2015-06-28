@@ -1,6 +1,8 @@
 from image_sharing import app, session
 from database_setup import Album, Image
 from flask import jsonify
+from dict2xml import dict2xml as xmlify
+
 
 #############################################
 #                  JSON requests            #
@@ -29,3 +31,37 @@ def image_items_json(album_id, image_id):
 
     item = session.query(Image).filter_by(id=image_id).all()
     return jsonify(ImageItem=[x.serialize for x in item])
+
+
+#############################################
+#                 XML requests              #
+#############################################
+
+
+@app.route('/albums/XML')
+def albums_xml():
+    albums = session.query(Album).all()
+    data = [{"id": x.id, "name": x.name} for x in albums]
+    return xmlify({"Album": data}, wrap="all", indent="    ")
+
+
+@app.route('/album/<int:album_id>/images/XML')
+def images_xml(album_id):
+    items = session.query(Image).filter_by(album_id=album_id).all()
+    data = [{"id": x.id,
+             "name": x.name,
+             "file name": x.file_name,
+             "description": x.description
+             } for x in items]
+    return xmlify({"Image": data}, wrap="all", indent="    ")
+
+
+@app.route('/album/<int:album_id>/images/<int:image_id>/XML')
+def image_items_xml(album_id, image_id):
+    item = session.query(Image).filter_by(id=image_id).all()
+    data = [{"id": x.id,
+             "name": x.name,
+             "file name": x.file_name,
+             "description": x.description
+             } for x in item]
+    return xmlify({"Image Item": data}, wrap="all", indent="    ")

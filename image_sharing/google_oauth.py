@@ -16,6 +16,34 @@ CLIENT_ID = json.loads(
 
 
 #############################################
+#               helper functions            #
+#############################################
+
+
+def get_user_id(email):
+    """Returns user_id given email address."""
+
+    try:
+        user = session.query(User).filter_by(email=email).first()
+        return user.id
+    except AttributeError:
+        return None
+
+
+def create_user(login_session):
+    """Uses login_session to add user to database."""
+
+    new_user = User(name    =login_session['username'],
+                    email   =login_session['email'],
+                    picture =login_session['picture'])
+    session.add(new_user)
+    session.commit()
+
+    user = session.query(User).filter_by(email=login_session['email']).one()
+    return user.id
+
+
+#############################################
 #            OAuth for Google+              #
 #############################################
 
@@ -179,31 +207,3 @@ def gdisconnect():
             json.dumps('Failed to revoke for given user.'), 401)
         response.headers['Content-Type'] = 'application/json'
         return response
-
-
-#############################################
-#               helper functions            #
-#############################################
-
-
-def get_user_id(email):
-    """Returns user_id given email address."""
-
-    try:
-        user = session.query(User).filter_by(email=email).first()
-        return user.id
-    except AttributeError:
-        return None
-
-
-def create_user(login_session):
-    """Uses login_session to add user to database."""
-
-    new_user = User(name    =login_session['username'],
-                    email   =login_session['email'],
-                    picture =login_session['picture'])
-    session.add(new_user)
-    session.commit()
-
-    user = session.query(User).filter_by(email=login_session['email']).one()
-    return user.id
