@@ -2,6 +2,7 @@ from flask import Flask
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from database_setup import Base
+from flask.ext.seasurf import SeaSurf
 
 #############################################
 
@@ -39,6 +40,7 @@ __author__ = ('Dee Reddy', 'eyeofpie@gmail.com')
 #############################################
 
 app = Flask(__name__)
+csrf = SeaSurf(app)
 
 # create and bind ORM engine [SQLAlchemy]:
 engine = create_engine(

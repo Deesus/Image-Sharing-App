@@ -40,6 +40,8 @@
 	<div class="row" >
 		<div class="pane center-block col-md-7">
 			<form action="{{ url_for('new_image', album_id=album.id) }}" method='POST' enctype='multipart/form-data'>
+				<!-- anti-forgery -->
+				<input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
 
 				<!-- HTML form fields -->
 				<div class="row">

@@ -1,5 +1,7 @@
 from image_sharing import app, session
 from database_setup import User
+from image_sharing import csrf
+
 from oauth2client.client import flow_from_clientsecrets
 from oauth2client.client import FlowExchangeError
 from flask import make_response, render_template, flash, request
@@ -65,11 +67,14 @@ def show_login():
 
 
 @app.route('/gconnect', methods=['POST'])
+@csrf.exempt
 def gconnect():
     """Page that connects user to Google's OAuth then redirects to home.
 
     Checks that the token sent by the client to the server matches
     the token server sent to client.
+
+    N.b. we exempt gconnect from csrf check.
     """
 
     # check if the token the client sent matches token server sent to client:

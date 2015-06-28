@@ -43,6 +43,8 @@
 	<div class = 'pane'>
 		<div class="pane center-block col-md-7">
 			<form action="{{ url_for('edit_image', album_id=album_id, image_id=item.id) }}" method='POST' enctype='multipart/form-data'>
+				<!-- anti-forgery -->
+				<input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
 
 				<!-- HTML form fields -->
 				<div class="row">Edit Name:</div>

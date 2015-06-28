@@ -13,8 +13,9 @@ The **Image Sharing App** is a Flask-based web app that that allows users to upl
 5. Enter `vagrant up` to launch the virtual machine. Then type `vagrant ssh` to log in.
 6. Cd to the `/image_sharing` folder: `cd /vagrant/image_sharing`
 7. You will need to install the dict2xml module: enter `sudo pip install dict2xml` for handling XML endpoints.
-8. You can setup the database with `psql -f create_database.sql`
-9. Finally, launch the app with `python start_server.py`
+8. To prevent cross-site request forgery (CSRF), we will need the flask-seasurf module: enter `sudo pip install flask-seasurf`
+9. You can setup the database with `psql -f create_database.sql`
+10. Finally, launch the app with `python start_server.py`
 
 ### Issues
 There are known compatibility issues with newer versions of flask. The **Image Sharing App** circumvents these issues, and you should not encounter any problems -- but if you do, particularly something in the order of `TypeError: <oauth2client.client.OAuth2Credentials object at 0xb5d7e90c> is not JSON serializable`, then it is advised to downgrade flask:
