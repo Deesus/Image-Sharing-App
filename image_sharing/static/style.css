@@ -186,6 +186,7 @@ textarea {
 * 		Login
 *******************/
 #signinButton {
+	cursor: pointer;
 	margin: 10px;
 	padding: 4px;
 	border-width: 1px;
@@ -205,6 +206,30 @@ textarea {
 	padding: 0px;
 	font-size: 1.25em;
 }
+
+.login-block {
+border-radius: 3px;
+color: white;
+font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+height: 50px;
+text-align: center;
+display: block;
+cursor: pointer;
+position: relative;
+/* line-height: 2; */			/*what is this? */
+/* white-space: nowrap; */ 		/* ??? */
+width: 95%;
+}
+
+.login-icon-box {
+float: left;
+margin-right: 10px;
+font-size: 28px;
+display: block;
+width: 40px;
+line-height: 1.2em;
+}
+/* what is `::before` ? */
 
 /******************
 * 		Misc.

@@ -53,7 +53,7 @@ class Album(Base):
     user_id     = Column(Integer, ForeignKey('user.id'))
     user        = relationship(User)
 
-    # JSON decorator:
+    # for JSON/XML endpoint data:
     @property
     def serialize(self):
         return {'id':    self.id,
@@ -78,7 +78,7 @@ class Image(Base):
     user_id     = Column(Integer, ForeignKey('user.id'))
     user        = relationship(User)
 
-    # JSON decorator:
+    # for JSON/XML endpoint data:
     @property
     def serialize(self):
         return {'id':           self.id,

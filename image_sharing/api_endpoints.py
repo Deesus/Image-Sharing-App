@@ -1,8 +1,6 @@
 from image_sharing import app, session
 from database_setup import Album, Image
-from flask import jsonify
-from dict2xml import dict2xml as xmlify
-
+from flask import jsonify, render_template, make_response
 
 #############################################
 #                  JSON requests            #
@@ -10,6 +8,7 @@ from dict2xml import dict2xml as xmlify
 
 
 @app.route('/albums/JSON')
+@app.route('/albums/json')
 def albums_json():
     """List all albums as JSON."""
 
@@ -18,6 +17,9 @@ def albums_json():
 
 
 @app.route('/album/<int:album_id>/images/JSON')
+@app.route('/album/<int:album_id>/images/json')
+@app.route('/album/<int:album_id>/JSON')
+@app.route('/album/<int:album_id>/json')
 def images_json(album_id):
     """List images for given album as JSON."""
 
@@ -26,6 +28,8 @@ def images_json(album_id):
 
 
 @app.route('/album/<int:album_id>/images/<int:image_id>/JSON')
+@app.route('/album/<int:album_id>/images/<int:image_id>/json')
+
 def image_items_json(album_id, image_id):
     """List image info for given image as JSON."""
 
@@ -39,29 +43,40 @@ def image_items_json(album_id, image_id):
 
 
 @app.route('/albums/XML')
+@app.route('/albums/xml')
 def albums_xml():
-    albums = session.query(Album).all()
-    data = [{"id": x.id, "name": x.name} for x in albums]
-    return xmlify({"Album": data}, wrap="all", indent="    ")
+    """List all albums as XML."""
 
+    albums = session.query(Album).all()
+    data = [x.serialize for x in albums]
+    template = render_template("xmlEndpoint.xml", data=data, wrap="all_albums")
+    response_ = make_response(template)
+    response_.headers['Content-Type'] = 'application/xml'
+    return response_
 
 @app.route('/album/<int:album_id>/images/XML')
+@app.route('/album/<int:album_id>/images/xml')
+@app.route('/album/<int:album_id>/XML')
+@app.route('/album/<int:album_id>/xml')
 def images_xml(album_id):
+    """List images for given album as XML."""
+
     items = session.query(Image).filter_by(album_id=album_id).all()
-    data = [{"id": x.id,
-             "name": x.name,
-             "file name": x.file_name,
-             "description": x.description
-             } for x in items]
-    return xmlify({"Image": data}, wrap="all", indent="    ")
+    data = [x.serialize for x in items]    
+    template = render_template("xmlEndpoint.xml", data=data, wrap="album")
+    response_ = make_response(template)
+    response_.headers['Content-Type'] = 'application/xml'
+    return response_
 
 
 @app.route('/album/<int:album_id>/images/<int:image_id>/XML')
+@app.route('/album/<int:album_id>/images/<int:image_id>/xml')
 def image_items_xml(album_id, image_id):
+    """List image info for given image as XML."""
+
     item = session.query(Image).filter_by(id=image_id).all()
-    data = [{"id": x.id,
-             "name": x.name,
-             "file name": x.file_name,
-             "description": x.description
-             } for x in item]
-    return xmlify({"Image Item": data}, wrap="all", indent="    ")
+    data = [x.serialize for x in item]
+    template = render_template("xmlEndpoint.xml", data=data, wrap="image")
+    response_ = make_response(template)
+    response_.headers['Content-Type'] = 'application/xml'
+    return response_

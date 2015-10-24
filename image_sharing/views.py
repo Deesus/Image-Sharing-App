@@ -2,8 +2,7 @@ from image_sharing import app, session
 from database_setup import Album, Image, User
 from sqlalchemy.exc import IntegrityError
 
-from flask import render_template, flash
-from flask import request, redirect, url_for
+from flask import render_template, flash, make_response, request, redirect, url_for
 from flask import session as login_session
 
 from functools import wraps     # for login_required wrapper
@@ -335,3 +334,21 @@ def media(album_id, file_name):
     """Returns file to browser -- i.e. allows access to static files"""
 
     return send_file(("uploaded/%s/" + file_name) % str(album_id))
+
+
+# routing for 404:
+# ______________________
+
+
+@app.errorhandler(404)
+def not_found(error):
+    """Renders a propper 404 page"""
+
+    # from the Flask api -- `make_response()` is called instead of using a `return`, 
+    # resulting in a response object which canbe used to attach headers:
+    response_ = make_response(render_template('404Error.html'), 404)
+
+    # uncomment and modify to attach a header:
+    # response_.headers['foo'] = 'bar'
+
+    return response_

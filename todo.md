@@ -1,4 +1,6 @@
 ## To do:
+0) remove `/` from the external css defininatios in the html templates. (E.g. it should be `<link rel="stylesheet" href="styles.css">` not `<link rel="stylesheet" href="styles.css"/>`)
+
 1) Create downsampled thumbnails whem viewing albums instead of viewing fully-sized image.
     - Need to change database (database_setup.py) to link each image_id with its thumbnail counterpart.
     - Flask needs to be able to find the thumbnail when we specify the image.

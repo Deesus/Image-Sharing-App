@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<{{wrap}}>
+{% if wrap == "all_albums" %}
+    {% for x in data %}
+    <album>
+        <name>{{x.name}}</name>
+        <id>{{x.id}}</id>
+    </album>
+    {% endfor %}
+{% elif wrap == "album" %}
+    {% for x in data %}
+    <image>
+        <name>{{x.name}}</name>
+        <id>{{x.id}}</id>
+        <description>{{x.description}}</description>
+        <file_name>{{x['file name']}}</file_name>
+    </image>
+    {% endfor %}
+{% elif wrap == "image" %}
+    {% for x in data %}
+    <name>{{x.name}}</name>
+    <id>{{x.id}}</id>
+    <description>{{x.description}}</description>
+    <file_name>{{x['file name']}}</file_name>
+    {% endfor %}
+{% endif %}
+</{{wrap}}>
