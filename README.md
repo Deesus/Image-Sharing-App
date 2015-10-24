@@ -1,21 +1,18 @@
 # Image Sharing App
 
-#### version 0.7
+#### version 0.8.0
 
 ### Upload and Share Images
 The **Image Sharing App** is a Flask-based web app that that allows users to upload and share images. The app allows users to create public albums; it implements 3-party OAuth2 to give ownership of albums and images to the creators/uploaders. Users can freely access and view images from any album, but only the authorized users may add/edit/delete their own images and albums.
 
 ### Installation
 1. If you don't already have Vagrant VM, you can [download it here](https://www.virtualbox.org/wiki/Downloads) and install it on your machine.
-2. Download the [latest release of Image Sharing App](https://github.com/Ogodei/Image-Sharing-App/archive/master.zip) from GitHub.
-3. Extract the zipped files to your Vagrant directory.
-4. From the terminal, cd to your `/vagrant` directory.
-5. Enter `vagrant up` to launch the virtual machine. Then type `vagrant ssh` to log in.
-6. Cd to the `/image_sharing` folder: `cd /vagrant/image_sharing`
-7. You will need to install the dict2xml module: enter `sudo pip install dict2xml` for handling XML endpoints.
-8. To prevent cross-site request forgery (CSRF), we will need the flask-seasurf module: enter `sudo pip install flask-seasurf`
-9. You can setup the database with `psql -f create_database.sql`
-10. Finally, launch the app with `python start_server.py`
+2. Clone/download the [latest release of Image Sharing App](https://github.com/Ogodei/Image-Sharing-App/archive/master.zip) from GitHub to your Vagrant directory.
+3. From the terminal, cd to your `/vagrant` directory.
+4. Enter `vagrant up` to launch the virtual machine. Then type `vagrant ssh` to log in.
+5. Cd to the `/image_sharing` folder: `cd /vagrant/image_sharing`
+6. Run the setup script: `sh setup.sh`
+7. Finally, launch the app with `python start_server.py`
 
 ### Issues
 There are known compatibility issues with newer versions of flask. The **Image Sharing App** circumvents these issues, and you should not encounter any problems -- but if you do, particularly something in the order of `TypeError: <oauth2client.client.OAuth2Credentials object at 0xb5d7e90c> is not JSON serializable`, then it is advised to downgrade flask:
