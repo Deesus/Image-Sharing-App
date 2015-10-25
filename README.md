@@ -10,15 +10,18 @@ The **Image Sharing App** is a Flask-based web app that that allows users to upl
 2. Clone/download the [latest release of Image Sharing App](https://github.com/Ogodei/Image-Sharing-App/archive/master.zip) from GitHub to your Vagrant directory.
 3. From the terminal, cd to your `/vagrant` directory.
 4. Enter `vagrant up` to launch the virtual machine. Then type `vagrant ssh` to log in.
-5. Cd to the `/image_sharing` folder: `cd /vagrant/image_sharing`
-6. Run the setup script: `sh setup.sh`
-7. Finally, launch the app with `python start_server.py`
+5. With the VM up, `cd` to the `/image_sharing` folder (root).
+6. Run the setup script to install dependencies: `sudo sh setup.sh`
+7. Create the database with `psql -f create_database.sql`
+8. Finally, launch the app with `python start_server.py`
 
 ### Issues
-There are known compatibility issues with newer versions of flask. The **Image Sharing App** circumvents these issues, and you should not encounter any problems -- but if you do, particularly something in the order of `TypeError: <oauth2client.client.OAuth2Credentials object at 0xb5d7e90c> is not JSON serializable`, then it is advised to downgrade flask:
+1) There are known compatibility issues with newer versions of flask. The **Image Sharing App** circumvents these issues, and you should not encounter any problems -- but if you do, particularly something in the order of `TypeError: <oauth2client.client.OAuth2Credentials object at 0xb5d7e90c> is not JSON serializable`, then it is advised to downgrade flask:
 ```
 sudo pip install flask==0.9
 ```
+
+2) If you have trouble trying to run `setup.sh`, you will have to manually download and install the listed dependencies/packages through the command line.
 
 ### Usage
 Users must sign in before they can add/edit/delete albums and images. However, they can view any extant albums/images.
