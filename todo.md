@@ -1,4 +1,29 @@
-## To do:
+## most recent TODO:
+-image sharing app:
+	-create home/index page:
+		-have a homepage that showcases user images
+	-when loging in to google, create a new window instead of redirect
+	-add facebook OAuth (and perhaps twitter OAuth)
+
+	-changes to image page:
+		-create temple for 'image' page such that when we click on image/thumbnail, we should be directed to a page dedicated to the image, its details, description, etc.
+		-the album page SHOULDN'T show descrtiption -- just title (maybe not even that). 
+		-c.f. the structure of imgur/flickr/etc. for ideas.
+		-add date image is added
+
+	-front-end:
+		-add frames (for top/header) to keep it DRY
+		-move 'log-in'/'log-out' to menu bar (instead of middle of header)
+		-change google sign-in button
+		-add xml/json enpoints button
+
+	-other:
+		-add shell script to setup app (e.g. automate the `psql -f create_databse.sql` and other stuff)
+		-get pillow/custom image resizing(Java?) to work?
+		-add js for user feedback (e.g. upload progress)
+		-add api link in footer (i.e. how to access json/xml endpoints)
+
+## older todo:
 0) remove `/` from the external css defininatios in the html templates. (E.g. it should be `<link rel="stylesheet" href="styles.css">` not `<link rel="stylesheet" href="styles.css"/>`)
 
 1) Create downsampled thumbnails whem viewing albums instead of viewing fully-sized image.
