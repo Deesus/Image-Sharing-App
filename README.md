@@ -1,6 +1,6 @@
 # Image Sharing App
-
-#### version 0.8.0
+##### version 0.8.2
+###### An older deployed version can be [found here](http://54.186.19.143)
 
 ### Upload and Share Images
 The **Image Sharing App** is a Flask-based web app that that allows users to upload and share images. The app allows users to create public albums; it implements 3-party OAuth2 to give ownership of albums and images to the creators/uploaders. Users can freely access and view images from any album, but only the authorized users may add/edit/delete their own images and albums.
