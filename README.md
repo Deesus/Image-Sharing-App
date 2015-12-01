@@ -1,5 +1,4 @@
 # Image Sharing App
-##### version 0.8.2
 ###### An older deployed version can be [found here](http://54.186.19.143)
 
 ### Upload and Share Images
