@@ -7,13 +7,12 @@ The **Image Sharing App** is a Flask-based web app that that allows users to upl
 
 ### Installation
 1. If you don't already have Vagrant VM, you can [download it here](https://www.virtualbox.org/wiki/Downloads) and install it on your machine.
-2. Clone/download the [latest release of Image Sharing App](https://github.com/Ogodei/Image-Sharing-App/archive/master.zip) from GitHub to your Vagrant directory.
-3. From the terminal, cd to your `/vagrant` directory.
-4. Enter `vagrant up` to launch the virtual machine. Then type `vagrant ssh` to log in.
-5. With the VM up, `cd` to the `/image_sharing` folder (root).
-6. Run the setup script to install dependencies: `sudo sh setup.sh`
-7. Create the database with `psql -f create_database.sql`
-8. Finally, launch the app with `python start_server.py`
+2. Clone/download the [latest release of Image Sharing App](https://github.com/Ogodei/Image-Sharing-App/archive/master.zip) from GitHub.
+3. From the terminal, cd to the cloned directory (you should see the included `Vagrantfile`).
+4. Enter `vagrant up` to launch the virtual machine. Wait for the dependencies to be downloaded. 
+5. Then type `vagrant ssh` to log in.
+6. Create the database with `psql -f create_database.sql`
+7. Finally, launch the app with `python start_server.py`
 
 ### Issues
 1) There are known compatibility issues with newer versions of flask. The **Image Sharing App** circumvents these issues, and you should not encounter any problems -- but if you do, particularly something in the order of `TypeError: <oauth2client.client.OAuth2Credentials object at 0xb5d7e90c> is not JSON serializable`, then it is advised to downgrade flask:
