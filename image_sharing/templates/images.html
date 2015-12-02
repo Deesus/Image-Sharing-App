@@ -10,9 +10,9 @@
 	{% include 'partials/headerLogedIn.html' %}
 
 	<!-- main -->
-	<div class='row'>
 
-		<!-- display flash messages -->
+	<!-- display flash messages -->
+	<div class='row h-center'>
 		{% with messages = get_flashed_messages() %}
 			{% if messages %}
 				{% for x in messages %}
@@ -21,7 +21,10 @@
 				<br/>
 			{% endif %}
 		{% endwith %}
+	</div> <!-- /.row -->
 
+
+	<div class='row'>
 		<!-- display image items -->
 		{% for image in images %}
 			<div class='image-tile col-4 image-tile h-center'>
@@ -61,11 +64,11 @@
 		{% endfor %}
 
 		<!-- the 'add new image' is the last image-tile -->
-		<div class='col-4 image-tile h-center v-center'>
+		<div class='col-4 image-tile h-center v-center make-column'>
 			<!-- if no images exist -->
 			<div style="padding-bottom:10px;">
 				{% if not images %}
-					You currently have no images in album.
+					You currently have no images in this album.
 				{% endif %}
 			</div>
 			<a href="{{ url_for('new_image', album_id=album.id) }}">
