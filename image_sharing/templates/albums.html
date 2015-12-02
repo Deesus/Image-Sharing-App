@@ -2,40 +2,12 @@
 <html>
 
 <head>
-	<title>Image Sharing App | Albums</title>
 	{% include 'partials/head.html' %}
 </head>
 
 <body>
 	<!-- header -->
-
-	<!-- header title -->
-	<div class="row album-header">
-		<div class="row">
-			<div class="col-md-12">
-				<h1 class='text-center'>List of Albums</h1>
-			</div>
-		</div>
-	</div>
-
-	<!-- login button -->
-	<div class="row header-login">
-		<div class="col-xs-12 logged-in">
-			<h4>
-				<span style="vertical-align:middle">Logged in &nbsp;</span><a href="{{ url_for('gdisconnect') }}" class="top-menu-cell" target="_blank"><i class="fa fa-sign-out"></i></a>
-			</h4>
-		</div>
-	</div>
-
-	<div class="line"></div>
-
-	<!-- top bar options-->
-	<div class="row top-menu">	
-		<div class="col-md-12">
-			<a href="{{ url_for('show_albums') }}" class="top-menu-cell text-center">Main</a>
-			<a href="{{url_for('new_album')}}" class="top-menu-cell text-center">Add Album</a>
-		</div>
-	</div>
+	{% include 'partials/headerLogedIn.html' %}
 
 
 	<!-- main -->

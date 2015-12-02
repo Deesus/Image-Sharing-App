@@ -2,35 +2,12 @@
 <html>
 
 <head>
-	<title>Image Sharing App | New Image</title>
 	{% include 'partials/head.html' %}
 </head>
 
 <body>
 	<!-- header -->
-	<div class="row album-header">
-		<div class="col-md-12 text-center">
-			<h1>Add Images for {{album.name}}</h1>
-		</div>
-	</div>
-	<!-- login button -->
-	<div class="row header-login">
-		<div class="col-xs-12 logged-in">
-			<h4>
-				<span style="vertical-align:middle">Logged in &nbsp;</span><a href="{{ url_for('gdisconnect') }}" class="top-menu-cell" target="_blank"><i class="fa fa-sign-out"></i></a>
-			</h4>
-		</div>
-	</div>
-
-	<div class="line"></div>
-
-	<!-- top bar options-->
-	<div class="row top-menu">	
-		<div class="col-md-12">
-			<a href="{{ url_for('show_albums') }}" class="top-menu-cell text-center">Main</a>
-			<a href="{{ url_for('show_images', album_id=album.id) }}" class="top-menu-cell text-center">Back to Album</a>
-		</div>
-	</div>
+	{% include 'partials/headerLogedIn.html' %}
 
 	<!-- container for HTML form - entire form is 7 columns wide -->
 	<div class="row" >

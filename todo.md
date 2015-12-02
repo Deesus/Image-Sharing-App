@@ -12,14 +12,11 @@
 		-add date image is added
 
 	-front-end:
-		-add frames (for top/header) to keep it DRY
-		-move 'log-in'/'log-out' to menu bar (instead of middle of header)
 		-change google sign-in button
 		-add xml/json enpoints button
 
 	-other:
-		-add shell script to setup app (e.g. automate the `psql -f create_databse.sql` and other stuff)
-		-get pillow/custom image resizing(Java?) to work?
+		-get pillow/custom image resizing to work?
 		-add js for user feedback (e.g. upload progress)
 		-add api link in footer (i.e. how to access json/xml endpoints)
 

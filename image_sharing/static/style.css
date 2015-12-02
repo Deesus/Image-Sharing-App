@@ -1,39 +1,222 @@
-/******************
-* 		General
-*******************/
-h1 {
-	font-weight: normal !important;
+/**************
+ Resets
+ **************/
+
+* {
+    margin: 0;
+    padding: 0;
 }
 
-p {
-	font-size: 1.1em !important;
+html {
+    box-sizing: border-box;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
 }
 
 body {
-	font-family: 'Century Gothic', monospace !important;
+    font-family: Helvetica, sans-serif;
 }
 
-.pane {
-	float: none !important;
-	padding: 30px !important;
-	border: 0px;
-	border-radius: 25px;
+/**************
+ Grid System
+ **************/
+
+.row {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: -webkit-box;
+    display: flex;
+
+    /* reset flex */
+    -webkit-flex: 0 1 auto;
+    -ms-flex: 0 1 auto;
+    -webkit-box-flex: 0;
+    flex: 0 1 auto;
+
+    /* short for flex-direction flex-wrap */
+    -webkit-flex-flow: row wrap;
+    -ms-flex-flow: row wrap;
+    flex-flow: row wrap;
+
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+}
+
+[class ^= 'col-'] {
+    /* reset flex -- don't readjust width of columns */
+    -webkit-flex: 0 0 auto;
+    -ms-flex: 0 0 auto;
+    -webkit-box-flex: 0;
+    flex: 0 0 auto;
+
+    /* display as flex */
+    display: flex;
+}
+
+.col-1 {
+    -ms-flex-preferred-size: 8.333%;        /* `-ms-flex-preferred-size` used for IE10 support */
+    -webkit-flex-basis: 8.333%;
+    flex-basis: 8.333%;
+    max-width: 8.333%;
+}
+
+.col-2 {
+    -ms-flex-preferred-size: 8.333%;
+    -webkit-flex-basis: 16.667%;
+    flex-basis: 16.667%;
+    max-width: 16.667%;
+}
+
+.col-3 {
+    -ms-flex-preferred-size: 8.333%;
+    -webkit-flex-basis: 25%;
+    flex-basis: 25%;
+    max-width: 25%;
+}
+
+.col-4 {
+    -ms-flex-preferred-size: 8.333%;
+    -webkit-flex-basis: 33.333%;
+    flex-basis: 33.333%;
+    max-width: 33.333%;
+}
+
+.col-5 {
+    -ms-flex-preferred-size: 8.333%;
+    -webkit-flex-basis: 41.667%;
+    flex-basis: 41.667%;
+    max-width: 41.667%;
+}
+
+.col-6 {
+    -ms-flex-preferred-size: 8.333%;
+    -webkit-flex-basis: 50%;
+    flex-basis: 50%;
+    max-width: 50%;
+}
+
+.col-7 {
+    -ms-flex-preferred-size: 8.333%;
+    -webkit-flex-basis: 58.333%;
+    flex-basis: 58.333%;
+    max-width: 58.333%;
+}
+
+.col-8 {
+    -ms-flex-preferred-size: 8.333%;
+    -webkit-flex-basis: 66.667%;
+    flex-basis: 66.667%;
+    max-width: 66.667%;
+}
+
+.col-9 {
+    -ms-flex-preferred-size: 8.333%;
+    -webkit-flex-basis: 75%;
+    flex-basis: 75%;
+    max-width: 75%;
+}
+
+.col-10 {
+    -ms-flex-preferred-size: 8.333%;
+    -webkit-flex-basis: 83.333%;
+    flex-basis: 83.333%;
+    max-width: 83.333%;
+}
+
+.col-11 {
+    -ms-flex-preferred-size: 8.333%;
+    -webkit-flex-basis: 91.667%;
+    flex-basis: 91.667%;
+    max-width: 91.667%;
+}
+
+.col-12 {
+    -ms-flex-preferred-size: 8.333%;
+    -webkit-flex-basis: 100%;
+    flex-basis: 100%;
+    max-width: 100%;
+}
+
+/*******************
+ Attributes
+ *******************/
+/* horizontally align items inside a container: */
+.h-center {
+    display: flex;
+    justify-content: center;
+}
+
+/* vertically align items inside a container: */
+.v-center {
+    display: flex;
+    align-items: center;
+}
+
+/* container makes any/all child items equal in width
+   (but content inside items can overflow if too long) */
+.equal-width-divs > * {
+    /* TODO: Is using flex better than simply using `width: 100%;`? */
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    -webkit-box-flex: 1;
+    flex: 1;
+}
+
+/* container spaces all child content equally
+   (but div widths will be different) */
+.equally-spaced-content {
+    justify-content: space-between;
+}
+
+/*  in certain cases, when we want to equally space items inside a column,
+    `equally-spaced-content` and `equal-width-divs` won't work -- this resets the display.
+    TODO: can't we just put this inside `equally-spaced-content` and `equal-width-divs`? */
+.reset {
+	display: flex;      /* TODO: do we need to support others (e.g. -web-kit, -ms-flex, etc.)? */
+	width: 100%
+}
+
+/* child items are aligned in a column */
+.make-column {
+    width: 100%;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-orient: vertical;
+}
+
+.align-bottom {
+    align-self: flex-end;
+}
+
+/******************
+* 		General
+*******************/
+
+h1 {
+	font-weight: normal;
+}
+
+p {
+	font-size: 1.1em;
 }
 
 a {
 	text-decoration: none !important;
-	color: #343c3f !important;
+	color: #343c3f;
 }
 
 a:hover {
-	color: black !important;
+	color: black;
 }
 
 /******************
 * 		Forms
 *******************/
 input {
-	width: 100% !important;
+	width: 100%;
 }
 
 textarea {
@@ -43,53 +226,6 @@ textarea {
 	box-sizing: border-box;         /* Opera/IE 8+ */
 	-moz-box-sizing: border-box;    /* Firefox */
 	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-}
-
-/******************
-* 		Header
-*******************/
-.album-header {
-	height: 128px;
-	color: white;
-	background-color: #d9534f; 
-	border-bottom: none;
-	margin-bottom: none;
-}
-
-.line {
-	width: 100%;
-	margin: none;
-	border: none;
-	height: 2px;
-	background-repeat: repeat-x;
-	background-image: url("/static/header_line.png");
-}
-
-.header-login{
-	text-align: right;
-	background-color: #d9534f;
-	height: 40px;
-}
-
-.top-menu {
-	height: 30px;
-	background-color: #d9534f;
-}
-
-.top-menu-cell {
-	vertical-align:middle;
-	color: #fbaeac !important;
-	padding: 0px 10px 0px 10px;
-}
-
-.top-menu-cell:hover {
-	color: white !important;
-}
-
-.logged-in {
-
-	color: #fbaeac !important;
-	padding-right: 5%;
 }
 
 /******************
@@ -112,8 +248,8 @@ textarea {
 *    Album Block
 *******************/
 .album-block {
-	display:block !important;
-	width:50% !important;
+	display:block;
+	width:50%;
 	padding: 20px;
 	background-color: white;
 	transition: all 0.8s ease;
@@ -131,12 +267,12 @@ textarea {
 *******************/
 .dee-button {
 	/* sets to block */
-	display:block !important;				
-	width:100% !important;
+	display:block;				
+	width:100%;
 
 	/* text: white, no hover decoration */
-	color: white !important;
-	text-decoration: none !important;
+	color: white;
+	text-decoration: none;
 
 	background-color: #d9534f;
 	display:inline-block;
@@ -161,25 +297,25 @@ textarea {
 }
 .dee-button:hover {
 	background-color: #cc3333;
-	color: white !important;
+	color: white;
 }
 
 .btn-yellow{
-	background-color: #f0ad4e !important;
-	color: white !important;
+	background-color: #f0ad4e;
+	color: white;
 }
 .btn-yellow:hover {
-	background-color: #ff9900 !important;
-	color: white !important;
+	background-color: #ff9900;
+	color: white;
 }
 
 .btn-green{
-	background-color: #5cb85c !important;
-	color: white !important;
+	background-color: #5cb85c;
+	color: white;
 }
 .btn-green:hover {
-	background-color: #339933 !important;
-	color: white !important;
+	background-color: #339933;
+	color: white;
 }
 
 /******************
@@ -234,16 +370,8 @@ line-height: 1.2em;
 /******************
 * 		Misc.
 *******************/
-.col-xs-4 {
-	padding: 2px !important;
-}
-
-.col-xs-2 {
-	padding: 2px !important;
-}
-
-.fa-camera-retro {
-	font-size: 100px;
+.fa-camera {
+	font-size: 550%;
 }
 
 .fa-plus {
@@ -260,9 +388,51 @@ line-height: 1.2em;
 	margin-right: 20px;
 }
 
-/* to vertically center content */
-.center-y {
-	
-	top: 50%;
-	transform: translateY(50%);
+/******************
+* 		More stuff
+*******************/
+@font-face{
+	font-family: MANIFESTO;
+	src: url('MANIFESTO.ttf');
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+/* sections */
+
+header {
+	width: 100%;
+	height: 60px;
+	background-color: white;
+	border-bottom: 1px solid gray;
+
+	font-family: proxima-nova,"Helvetica Neue", Helvetica, Arial, sans-serif;
+	margin-bottom: 20px;
+}
+
+
+/* navigation */
+
+nav {
+	height: 59px;
+}
+
+.nav-link {
+	color: #979797 !important;
+	text-decoration: none;
+	transition: 0.5s ease;
+}
+
+.nav-link:hover {
+	color: white;
+	background-color: #92bbff;
+	transition: 0.5s ease;
+}
+
+.logo-text {
+	font-family: MANIFESTO;
+	font-size: 200%;
 }

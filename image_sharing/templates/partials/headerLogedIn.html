@@ -1,0 +1,33 @@
+<header>
+	<div class="row">
+		<div class="col-1"><!-- acts as padding --></div>
+
+		<div class="col-6 logo-text v-center">
+			<i class="fa fa-camera-retro" style="font-size: 150%;"></i>
+			<span style="color:royalblue;">&nbsp;IMAGE</span> Sharing
+		</div>
+
+		<div class="col-4">
+			<nav class="reset equal-width-divs">
+				<a href="{{ url_for('show_albums') }}" class="v-center h-center nav-link">
+					HOME
+				</a>
+
+				<a href="{{ url_for('new_album') }}" class="v-center h-center nav-link">
+					NEW ALBUM
+				</a>
+
+				<a href="#" class="v-center h-center nav-link">
+					ABOUT
+				</a>
+
+				<a href="{{ url_for('gdisconnect') }}" class="v-center h-center nav-link" target="_blank">
+					LOG OUT &nbsp;&nbsp;<i class="fa fa-sign-out"></i>
+				</a>
+			</nav>
+		</div> <!-- /.col-4 -->
+
+
+		<div class="col-1"><!-- acts as padding --></div>
+	</div> <!-- /.row -->
+</header>

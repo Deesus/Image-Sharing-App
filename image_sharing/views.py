@@ -106,9 +106,9 @@ def show_albums():
 
     # if logged in, render the page where user has add/delete/edit options:
     if 'username' not in login_session:
-        return render_template('publicAlbums.html', albums=albums)
+        return render_template('publicAlbums.html', albums=albums, title='Public Albums')
     else:
-        return render_template('albums.html', albums=albums)
+        return render_template('albums.html', albums=albums, title='Albums')
 
 
 @app.route('/album/new/', methods=['GET', 'POST'])
@@ -139,7 +139,7 @@ def new_album():
 
         return redirect(url_for('show_albums'))
     else:
-        return render_template('newAlbum.html')
+        return render_template('newAlbum.html', title='New Album')
 
 
 @app.route('/album/<int:album_id>/edit/', methods=['GET', 'POST'])
@@ -160,7 +160,7 @@ def edit_album(album_id):
             flash("Album successfully edited")
             return redirect(url_for('show_albums'))
     else:
-        return render_template('editAlbum.html', album=album)
+        return render_template('editAlbum.html', album=album, title='Edit Album')
 
 
 @app.route('/album/<int:album_id>/delete/', methods=['GET', 'POST'])
@@ -193,7 +193,7 @@ def delete_album(album_id):
 
         return redirect(url_for('show_albums'))
     else:
-        return render_template('deleteAlbum.html', album=album)
+        return render_template('deleteAlbum.html', album=album, title='Delete Album')
 
 
 # routing for image pages:
@@ -213,9 +213,9 @@ def show_images(album_id):
     # if user is creator, render the page where he has add/delete/edit options:
     if 'username' not in login_session or \
             (creator.id != login_session['user_id']):
-        return render_template('publicImages.html', album=album, images=images)
+        return render_template('publicImages.html', album=album, images=images, title='Public Images')
     else:
-        return render_template('images.html', album=album, images=images)
+        return render_template('images.html', album=album, images=images, title='Images')
 
 
 @app.route('/album/<int:album_id>/image/new/', methods=['GET', 'POST'])
@@ -259,7 +259,7 @@ def new_image(album_id):
 
         return redirect(url_for('show_images', album_id=album_id))
     else:
-        return render_template('newImage.html', album=album)
+        return render_template('newImage.html', album=album, title='New Image')
 
 
 @app.route('/album/<int:album_id>/image/<int:image_id>/edit/',
@@ -289,7 +289,7 @@ def edit_image(album_id, image_id):
 
         return redirect(url_for('show_images', album_id=album_id))
     else:
-        return render_template('editImage.html', album_id=album_id, item=item)
+        return render_template('editImage.html', album_id=album_id, item=item, title='Edit Image')
 
 
 @app.route('/album/<int:album_id>/image/<int:image_id>/delete/',
@@ -322,7 +322,7 @@ def delete_image(album_id, image_id):
 
         return redirect(url_for('show_images', album_id=album_id))
     else:
-        return render_template('deleteImage.html', album=album, item=item)
+        return render_template('deleteImage.html', album=album, item=item, title='Delete Image')
 
 
 # routing for image upload/retrieval:

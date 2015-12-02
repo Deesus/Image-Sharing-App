@@ -2,69 +2,49 @@
 <html>
 
 <head>
-	<title>Image Sharing App | Edit Image</title>
 	{% include 'partials/head.html' %}
 </head>
 
 <body>
 	<!-- header -->
+	{% include 'partials/headerLogedIn.html' %}
 
-	<!-- header title -->
-	<div class="row album-header">
-		<div class="col-md-12">
-			<h1 class='text-center'>Edit Image: {{item.name}}</h1>
-		</div>
-	</div>
-	<!-- login button -->
-	<div class="row header-login">
-		<div class="col-xs-12 logged-in">
-			<h4>
-				<span style="vertical-align:middle">Logged in &nbsp;</span><a href="{{ url_for('gdisconnect') }}" class="top-menu-cell" target="_blank"><i class="fa fa-sign-out"></i></a>
-			</h4>
-		</div>
-	</div>
+	<div class='reset'>
+		
+		<form action="{{ url_for('edit_image', album_id=album_id, image_id=item.id) }}" method='POST' enctype='multipart/form-data'>
 
-	<div class="line"></div>
-
-	<!-- top bar options-->
-	<div class="row top-menu">	
-		<div class="col-md-12">
-			<a href="{{ url_for('show_albums') }}" class="top-menu-cell text-center">Main</a>
-			<a href="{{ url_for('show_images', album_id=album_id) }}" class="top-menu-cell text-center">Back to Album</a>
-		</div>
-	</div>
-
-	<!-- form input -->
-	<!-- container for form - entire form is 7 columns wide -->
-	<div class = 'pane'>
-		<div class="pane center-block col-md-7">
-			<form action="{{ url_for('edit_image', album_id=album_id, image_id=item.id) }}" method='POST' enctype='multipart/form-data'>
 				<!-- anti-forgery -->
 				<input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
 
 				<!-- HTML form fields -->
-				<div class="row">Edit Name:</div>
-				<div class="row">
-					<div class="col-xs-4">
+
+				<!-- edit name textbox -->
+				<div> 
+					Edit Name:
+				</div>
+				<div> 
+					<div>
 						<input type='text' size='30' name='itemName' value="{{item.name}}">
 					</div>
 				</div>
 
-				<div class="row">Edit Description:</div>
-				<div class="row">
-					<div class="col-xs-4">
+				<!-- edit description -->
+				<div>
+					Edit Description:
+				</div>
+
+				<div>
+					<div>
 						<textarea name='itemText' rows="3">{{item.description}}</textarea>
 					</div>
 				</div>
 
 				<!-- submit/cancel buttons -->
-				<div class="row">
-					<div class="col-xs-2"><input type='submit' value='Submit' class="dee-button btn-yellow"></div>
-					<div class="col-xs-2"><a href="{{ url_for('show_images', album_id=album_id) }}" class="dee-button">cancel</a></div>
+				<div>
+					<div><input type='submit' value='Submit' class="dee-button btn-yellow"></div>
+					<div><a href="{{ url_for('show_images', album_id=album_id) }}" class="dee-button">cancel</a></div>
 				</div>
-
-			</form>
-		</div>
+		</form>
 	</div>
 </body>
 

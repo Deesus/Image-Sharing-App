@@ -2,42 +2,15 @@
 <html>
 
 <head>
-	<title>Image Sharing App | Images</title>
 	{% include 'partials/head.html' %}
 </head>
 
 <body>
 	<!-- header -->
-
-	<!-- header title -->
-	<div class="row album-header">
-		<div class="row">
-			<div class="col-md-12">
-				<h1 class='text-center'>{{album.name}} Photoset</h1>
-			</div>
-		</div>
-	</div>
-
-	<!-- login button -->
-	<div class="row header-login">
-		<div class="col-xs-12 logged-in">
-			<h4>
-				<span style="vertical-align:middle">Logged in &nbsp;</span><a href="{{ url_for('gdisconnect') }}" class="top-menu-cell" target="_blank"><i class="fa fa-sign-out"></i></a>
-			</h4>
-		</div>
-	</div>
-
-	<div class="line"></div>
-	<!-- top bar options-->
-	<div class="row top-menu">	
-		<div class="col-md-12">
-			<a href="{{ url_for('show_albums') }}" class="top-menu-cell text-center">Main</a>
-			<a href="{{ url_for('new_image', album_id=album.id) }}" class="top-menu-cell text-center">Add Image</a>	
-		</div>
-	</div>
+	{% include 'partials/headerLogedIn.html' %}
 
 	<!-- main -->
-	<div class='pane'>
+	<div class='row'>
 
 		<!-- display flash messages -->
 		{% with messages = get_flashed_messages() %}
@@ -51,41 +24,57 @@
 
 		<!-- display image items -->
 		{% for image in images %}
-			<div class='image-tile col-md-6 col-lg-4 image-tile text-center'>
-				<!-- image -->
-				{% if image.file_name %}
-					<a href="{{ url_for('media', album_id=album.id, file_name=image.file_name) }}" target="_blank">
-						<img src="{{ url_for('media', album_id=album.id, file_name=image.file_name) }}" width="auto" height="180"/>
-					</a>
-				{% endif %}
-				<br/>
-				<!-- name and description fields -->
-				<p><strong>{{image.name}}</strong></p>
-				{{image.description}}<br/>
+			<div class='image-tile col-4 image-tile h-center'>
+				<div class='make-column'>
+					<!-- image -->
+					<div class='h-center'>
+						{% if image.file_name %}
+							<a href="{{ url_for('media', album_id=album.id, file_name=image.file_name) }}" target="_blank">
+								<img src="{{ url_for('media', album_id=album.id, file_name=image.file_name) }}" width="auto" height="180"/>
+							</a>
+						{% endif %}
+					</div>
+					
+					<!-- name field -->
+					<div class='h-center'>
+						<p><strong>{{image.name}}</strong></p>
+					</div>
+					
+					<!-- description field -->
+					<div class='h-center'>
+						<p>{{image.description}}</p>
+					</div>
+					
+					<!-- edit/delete -->
+					<div class='h-center'>
+						<a href="{{ url_for('edit_image', album_id=album.id, image_id=image.id) }}">
+							<i class="fa fa-pencil"></i>
+						</a>
+						<a href="{{ url_for('delete_image', album_id=album.id, image_id=image.id) }}">
+							<i class="fa fa-trash-o"></i>
+						</a>
+					</div>
 
-				<!-- edit/delete -->
-				<a href="{{ url_for('edit_image', album_id=album.id, image_id=image.id) }}"><i class="fa fa-pencil"></i></a>
-				<a href="{{ url_for('delete_image', album_id=album.id, image_id=image.id) }}"><i class="fa fa-trash-o"></i></a><br/>
+				</div> <!-- /.make-column -->
+				
 			</div>
 		{% endfor %}
 
 		<!-- the 'add new image' is the last image-tile -->
-		<div class='image-tile col-md-6 col-lg-4 image-tile text-center'>
-			<div class="center-y">
-				<!-- if no images exist -->
-				<div style="padding-bottom:10px;">
-					{% if not images %}
-						You currently have no images in album.
-					{% endif %}
-				</div>
-				<a href="{{ url_for('new_image', album_id=album.id) }}">
-					<i class="fa fa-camera-retro"></i><br/><br/>
-					<i class="fa fa-plus"></i> New Image
-				</a>
+		<div class='col-4 image-tile h-center v-center'>
+			<!-- if no images exist -->
+			<div style="padding-bottom:10px;">
+				{% if not images %}
+					You currently have no images in album.
+				{% endif %}
 			</div>
+			<a href="{{ url_for('new_image', album_id=album.id) }}">
+				<i class="fa fa-camera"></i><br/><br/>
+				<i class="fa fa-plus"></i> New Image
+			</a>
 		</div>
 		
-	</div>
+	</div><!-- ./row -->
 </body>
 
 </html>
