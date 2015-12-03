@@ -175,7 +175,7 @@ body {
     TODO: can't we just put this inside `equally-spaced-content` and `equal-width-divs`? */
 .reset {
 	display: flex;      /* TODO: do we need to support others (e.g. -web-kit, -ms-flex, etc.)? */
-	width: 100%
+	width: 100%;
 }
 
 /* child items are aligned in a column */
@@ -185,6 +185,15 @@ body {
     -ms-flex-direction: column;
     flex-direction: column;
     -webkit-box-orient: vertical;
+}
+
+/* child items are aligned in a row */
+.make-row {
+    width: 100%;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-orient: horizontal;
 }
 
 .align-bottom {
@@ -216,13 +225,13 @@ a:hover {
 * 		Forms
 *******************/
 input {
-	width: 100%;
+	width: 200%;
 }
 
 textarea {
 	resize: none;
 
-	width: 100%;
+	width: 200%;
 	box-sizing: border-box;         /* Opera/IE 8+ */
 	-moz-box-sizing: border-box;    /* Firefox */
 	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
@@ -296,16 +305,16 @@ textarea {
 	border-radius:4px;
 }
 .dee-button:hover {
-	background-color: #cc3333;
+	background-color: #ff5b45;
 	color: white;
 }
 
-.btn-yellow{
-	background-color: #f0ad4e;
+.btn-blue{
+	background-color: royalblue;
 	color: white;
 }
-.btn-yellow:hover {
-	background-color: #ff9900;
+.btn-blue:hover {
+	background-color: #468ef0;
 	color: white;
 }
 
@@ -435,4 +444,8 @@ nav {
 .logo-text {
 	font-family: MANIFESTO;
 	font-size: 200%;
+}
+
+form > div {
+	margin-top: 10px;
 }

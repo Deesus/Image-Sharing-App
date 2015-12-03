@@ -5,3 +5,4 @@ image_sharing/api_endpoints.pyc
 image_sharing/database_setup.pyc
 image_sharing/google_oauth.pyc
 image_sharing/views.pyc
+image_sharing/uploaded/
