@@ -10,16 +10,9 @@ The **Image Sharing App** is a Flask-based web app that that allows users to upl
 3. From the terminal, cd to the cloned directory (you should see the included `Vagrantfile`).
 4. Enter `vagrant up` to launch the virtual machine. Wait for the dependencies to be downloaded. 
 5. Then type `vagrant ssh` to log in.
-6. Create the database with `psql -f create_database.sql`
-7. Finally, launch the app with `python start_server.py`
-
-### Issues
-1) There are known compatibility issues with newer versions of flask. The **Image Sharing App** circumvents these issues, and you should not encounter any problems -- but if you do, particularly something in the order of `TypeError: <oauth2client.client.OAuth2Credentials object at 0xb5d7e90c> is not JSON serializable`, then it is advised to downgrade flask:
-```
-sudo pip install flask==0.9
-```
-
-2) If you have trouble trying to run `setup.sh`, you will have to manually download and install the listed dependencies/packages through the command line.
+6. Issue `cd /vagrant`.
+7. Create the database with `psql -f create_database.sql`
+8. Finally, launch the app with `python start_server.py`
 
 ### Usage
 Users must sign in before they can add/edit/delete albums and images. However, they can view any extant albums/images.
@@ -49,7 +42,9 @@ Image-Sharing-App/
     ├── start_server.py
     ├── client_secrets.json
     ├── README.md
-    ├── todo.md
+    ├── pg_config.sh
+    ├── Vagrantfile
+    ├── LICENSE
     └── image_sharing_app/
         ├── __init__.py
         ├── api_endpoints.py
@@ -58,11 +53,13 @@ Image-Sharing-App/
         ├── views.py
         ├── uploaded/
         ├── static/
-        │   ├── bootstrap.css
         │   ├── style.css
         │   ├── g_plus_logo.png
-        │   └── header_line.png
+        │   ├── header_line.png
+        │   └── MANIFESTO.ttf
         └── templates/
+            ├── 404Error.html
+            ├── about.html
             ├── albums.html
             ├── deleteAlbum.html
             ├── deleteImage.html
@@ -73,8 +70,20 @@ Image-Sharing-App/
             ├── newAlbum.html
             ├── newImage.html
             ├── publicAlbums.html
-            └── publicImages.html
+            ├── publicImages.html
+            ├── xmlEndpoint.xml
+            └── partials/
+                ├── footer.html
+                ├── head.html
+                ├── headerLogedIn.html
+                └── headerPublic.html
+```
+
+### Issues
+1) There are known compatibility issues with newer versions of flask. The **Image Sharing App** circumvents these issues, and you should not encounter any problems -- but if you do, particularly something in the order of `TypeError: <oauth2client.client.OAuth2Credentials object at 0xb5d7e90c> is not JSON serializable`, then it is advised to downgrade flask:
+```
+sudo pip install flask==0.9
 ```
 
 ### License
-MIT License.
+MIT License. Copyright (c) 2015 Dee Reddy.
