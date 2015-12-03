@@ -412,7 +412,7 @@ main {
 footer {
 	height: 20vh;
 	background: url('footer-bg.jpg') repeat;
-	border-top: 2px solid black;
+	border-top: 1px solid black;
 
 	font-size: 90%;
 	color: white;
