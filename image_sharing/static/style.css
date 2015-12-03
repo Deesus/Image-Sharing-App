@@ -154,8 +154,7 @@ body {
     align-items: center;
 }
 
-/* container makes any/all child items equal in width
-   (but content inside items can overflow if too long) */
+/* container makes any/all child items equal in width */
 .equal-width-divs > * {
     -webkit-flex: 1;
     -ms-flex: 1;
@@ -163,14 +162,12 @@ body {
     flex: 1;
 }
 
-/* container spaces all child content equally
-   (but div widths will be different) */
+/* container spaces all child content equally */
 .equally-spaced-content {
     justify-content: space-between;
 }
 
-/*  in certain cases, when we want to equally space items inside a column,
-    `equally-spaced-content` and `equal-width-divs` won't work -- this resets the display.*/
+/*  in certain cases, when we want to equally space items inside a column.*/
 .reset {
 	display: flex;
 	width: 100%;

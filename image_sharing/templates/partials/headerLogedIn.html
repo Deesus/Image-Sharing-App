@@ -13,9 +13,16 @@
 					HOME
 				</a>
 
-				<a href="{{ url_for('new_album') }}" class="v-center h-center nav-link">
-					NEW ALBUM
-				</a>
+				<!-- change menu button depending on if routed to album page or home page -->
+				{% if title == "Images" %}
+					<a href="{{ url_for('new_image', album_id=album.id) }}" class="v-center h-center nav-link">
+						ADD IMAGE
+					</a>
+				{% else %}
+					<a href="{{ url_for('new_album') }}" class="v-center h-center nav-link">
+						ADD ALBUM
+					</a>
+				{% endif %}
 
 				<a href="{{ url_for('about') }}" class="v-center h-center nav-link">
 					ABOUT
