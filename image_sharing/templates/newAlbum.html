@@ -4,7 +4,6 @@
 <head>
 	{% include 'partials/head.html' %}
 </head>
-</head>
 
 <body>
 	<!-- header -->
@@ -12,31 +11,33 @@
 
 	<!-- main -->
 	<div class="row" >
-		<div class="pane center-block col-md-7">
-			<div class="row">
-				<p>Name:</p>
-			</div>
+		<div class="col-3"></div>
 
-			<!-- HTML form fields -->
+		<div class="col-6">
+			
+			{# place divs inside the form tags #}
 			<form action="{{ url_for('new_album') }}" method='POST'>
 				<!-- anti-forgery -->
 				<input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
 
-				<div class="row">
-					<div class="col-xs-4" style="padding: 2px;">
-						<input type='text' name='name' placeholder='Album Name' required>
-					</div>
+				<div>
+					Name:
+				</div>
+
+				<div>
+					<input type='text' name='name' placeholder='Album Name' required>
 				</div>
 				
 				<!-- submit/cancel buttons -->
-				<div class="row">
-					<div class="col-xs-2"><input type='submit' value='Submit' class="dee-button btn-yellow"></div>
-					<div class="col-xs-2"><input type='submit' value='Cancel' class="dee-button" formnovalidate></div>
+				<div class='reset' style="width: 200%">
+					<input type='submit' value='Submit' class="dee-button">
+					<input type='submit' value='Cancel' class="dee-button btn-blue" formnovalidate>
 				</div>
-
 			</form>
-		</div>
-	</div>
+
+		</div> <!-- /.col-6 -->
+
+	</div> <!-- /.row -->
 </body>
 
 </html>

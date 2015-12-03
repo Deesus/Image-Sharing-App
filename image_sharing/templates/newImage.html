@@ -9,61 +9,52 @@
 	<!-- header -->
 	{% include 'partials/headerLogedIn.html' %}
 
-	<!-- container for HTML form - entire form is 7 columns wide -->
+	<!-- main -->
 	<div class="row" >
-		<div class="pane center-block col-md-7">
+		<div class="col-3"></div>
+
+		<!-- FORM FIELDS -->
+		<div class="col-6">
 			<form action="{{ url_for('new_image', album_id=album.id) }}" method='POST' enctype='multipart/form-data'>
 				<!-- anti-forgery -->
 				<input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
 
 				<!-- HTML form fields -->
-				<div class="row">
-					<div class="col-xs-4">
-						Upload Image:
-					</div>
-				</div>
 
 				<!-- file input -->
-				<div class="row">
-					<div class="col-xs-4">
-						<input type="file" name="file_" required>
-					</div>
+				<div>
+					Upload Image:
 				</div>
-				<br/>
+				<div>
+					<input type="file" name="file_" required>
+				</div>
 
-				<!-- name and description fields -->
-				<div class="row">
+				<!-- name field -->
+				<div>
 					Name:
 				</div>
-
-				<div class="row">
-					<div class="col-xs-4">
-						<input type='text' size='30' name='itemName'>
-					</div>
+				<div>
+					<input type='text' size='30' name='itemName'>
 				</div>
 
-				<div class="row">
-					<div class="col-xs-4">
-						Description:
-					</div>
+				<!-- description field -->
+				<div>
+					Description:
 				</div>
-
-				<div class="row">
-					<div class="col-xs-4">
-						<textarea name='itemText' rows="3"></textarea>
-					</div>
+				<div>
+					<textarea name='itemText' rows="3"></textarea>
 				</div>
 
 				<!-- submit/cancel buttons -->
-				<div class="row">
-					<div class="col-xs-2"><input type='submit' value='Submit' class="dee-button btn-yellow"></div>
-					<div class="col-xs-2"><a href="{{ url_for('show_images', album_id=album.id) }}" class="dee-button">cancel</a></div>
+				<div class='reset' style="width: 200%">
+					<input type='submit' value='Submit' class="dee-button">
+					<a href="{{ url_for('show_images', album_id=album.id) }}" class="dee-button  btn-blue">cancel</a>
 				</div>
 			</form>
-		</div>
-	</div>
+		</div> <!-- /.col-6 -->
 
-	<!-- insert external js file here -->
+		<div class="col-3"></div>
+	</div> <!-- /.row -->
 </body>
 
 </html>
