@@ -403,6 +403,47 @@ header {
 	margin-bottom: 20px;
 }
 
+main {
+	min-height: 80vh;
+}
+
+/* footer */
+
+footer {
+	height: 20vh;
+	background: url('footer-bg.jpg') repeat;
+	border-top: 2px solid black;
+
+	font-size: 90%;
+	color: white;
+}
+
+footer > .row {
+	height: 19vh;
+	padding-top: 20px;
+}
+
+a > .fa-github-square, a > .fa-linkedin-square, a > .fa-envelope-o {
+	color: lightgray;
+	font-size: 200%;
+	transition: 0.6s ease;
+}
+
+a:hover > .fa-github-square {
+	color: #80169f;
+	transition: 0.6s ease;
+}
+
+a:hover > .fa-linkedin-square {
+	color: #0066cc;
+	transition: 0.6s ease;
+}
+
+a:hover > .fa-envelope-o {
+	color: #a82f29;
+	transition: 0.6s ease;
+}
+
 /* navigation */
 
 nav {

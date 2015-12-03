@@ -6,25 +6,30 @@
 </head>
 
 <body>
-	<!-- header -->
-	{% include 'partials/headerPublic.html' %}
+	<main>
+		<!-- header -->
+		{% include 'partials/headerPublic.html' %}
 
-	<!-- main -->
-	<div class="row" >
-		<div class="col-3"></div>
+		<!-- main -->
+		<div class="row" >
+			<div class="col-3"></div>
 
-		<div class="col-6 make-column">
-			<div>
-			This demo app was created by Dee Reddy as part of the Udacity Nanodegree requirements. The back-end runs on Flask -- a Python web-framework, and files and information are stored in a PostgreSQL database.
-			</div>
-			
-			<div>
-			Please <a href='https://github.com/Deesus'><span style="color:royalblue">check out my GitHub</span></a> for more of my projects.
-			</div>
-		</div> <!-- /.col-6 -->
+			<div class="col-6 make-column">
+				<div>
+				This demo app was created by Dee Reddy as part of the Udacity Nanodegree requirements. The back-end runs on Flask -- a Python web-framework, and files and information are stored in a PostgreSQL database.
+				</div>
+				
+				<div>
+				Please <a href='https://github.com/Deesus'><span style="color:royalblue">check out my GitHub</span></a> for more of my projects.
+				</div>
+			</div> <!-- /.col-6 -->
 
-		<div class="col-3"></div>
-	</div> <!-- /.row -->
+			<div class="col-3"></div>
+		</div> <!-- /.row -->
+	</main>
+
+	<!-- footer -->
+	{% include 'partials/footer.html' %}
 </body>
 
 </html>

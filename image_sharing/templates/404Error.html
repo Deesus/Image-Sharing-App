@@ -5,23 +5,29 @@
 </head>
 
 <body>
-	{% include 'partials/headerPublic.html' %}
+	<main>
+		<!-- header -->
+		{% include 'partials/headerPublic.html' %}
 	
-	<div class="row">
-		<div class="col-3"></div>
+		<!-- main -->
+		<div class="row">
+			<div class="col-3"></div>
 
-		<div class="col-6 make-column">
-			<h2>404</h2>
-			<div>
-				The page exists because the page you're looking for doesn't exist.
-			</div>
-			<div>
-				<a href="{{ url_for('show_albums') }}"><span style="color: royalblue">Return Home</span></a>
-			</div>
-		</div> <!-- /.col-6 -->
+			<div class="col-6 make-column">
+				<h2>404</h2>
+				<div>
+					The page exists because the page you're looking for doesn't exist.
+				</div>
+				<div>
+					<a href="{{ url_for('show_albums') }}"><span style="color: royalblue">Return Home</span></a>
+				</div>
+			</div> <!-- /.col-6 -->
 
-		<div class="col-3"></div>
-	</div> <!-- /.row -->
+			<div class="col-3"></div>
+		</div> <!-- /.row -->
+	</main>
 
+	<!-- footer -->
+	{% include 'partials/footer.html' %}
 </body>
 </html>

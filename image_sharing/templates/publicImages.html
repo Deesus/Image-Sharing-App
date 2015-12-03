@@ -6,11 +6,11 @@
 </head>
 
 <body>
-	<!-- header -->
-	{% include 'partials/headerLogedIn.html' %}
+	<main>
+		<!-- header -->
+		{% include 'partials/headerLogedIn.html' %}
 
-	<!-- main -->
-	<div class='pane'>
+		<!-- main -->
 
 		<!-- display flash messages -->
 		{% with messages = get_flashed_messages() %}
@@ -55,7 +55,9 @@
 			</div>
 		</div>
 
-	</div>
-</body>
+	</main>
 
+	<!-- footer -->
+	{% include 'partials/footer.html' %}
+</body>
 </html>

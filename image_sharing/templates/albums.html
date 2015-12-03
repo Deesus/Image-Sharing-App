@@ -6,52 +6,55 @@
 </head>
 
 <body>
-	<!-- header -->
-	{% include 'partials/headerLogedIn.html' %}
+	<main>
+		<!-- header -->
+		{% include 'partials/headerLogedIn.html' %}
 
-	<!-- main -->
-	
-	<!-- display flash messages -->
-	<div class='h-center'>
-		{% with messages = get_flashed_messages() %}
-			{% if messages %}
-				{% for x in messages %}
-					<strong>{{x}}</strong>
-				{% endfor %}
-				<br/>
-			{% endif %}
-		{% endwith %}
-	</div>
+		<!-- main -->
+		
+		<!-- display flash messages -->
+		<div class='h-center'>
+			{% with messages = get_flashed_messages() %}
+				{% if messages %}
+					{% for x in messages %}
+						<strong>{{x}}</strong>
+					{% endfor %}
+					<br/>
+				{% endif %}
+			{% endwith %}
+		</div>
 
-	<!-- list user's photo albums -->
-	
-		{% for x in albums %}
+			<!-- list user's photo albums -->		
+			{% for x in albums %}
+			<div class="album-block">
+				<div class="row">
+					<div class="col-10">
+						<a href="{{ url_for('show_images', album_id=x.id) }}">{{x.name}}</a>
+					</div>
+					<div class="col-2">
+						<a href="{{ url_for('edit_album', album_id=x.id) }}"><i class="fa fa-pencil"></i></a>
+						<a href="{{ url_for('delete_album', album_id=x.id) }}"><i class="fa fa-trash-o"></i></a>
+					</div>
+				</div> <!-- /.row -->
+			</div> <!-- /.album-block -->
+			{% endfor %}
+		
+
+		<!-- if no albums exist -->
+		{% if not albums %}
+			<p class='h-center'>There are currently no albums.</p>
+		{% endif %}
+
+		<!-- the 'add new album' is the last album-block -->
 		<div class="album-block">
-			<div class="row">
-				<div class="col-10">
-					<a href="{{ url_for('show_images', album_id=x.id) }}">{{x.name}}</a>
-				</div>
-				<div class="col-2">
-					<a href="{{ url_for('edit_album', album_id=x.id) }}"><i class="fa fa-pencil"></i></a>
-					<a href="{{ url_for('delete_album', album_id=x.id) }}"><i class="fa fa-trash-o"></i></a>
-				</div>
-			</div> <!-- /.row -->
-		</div> <!-- /.album-block -->
-		{% endfor %}
-	
+			<a href="{{url_for('new_album')}}">
+				<h3> <i class="fa fa-plus"></i> Create New Album</h3>
+			</a>
+		</div>
+	</main>
 
-	<!-- if no albums exist -->
-	{% if not albums %}
-		<p class='h-center'>There are currently no albums.</p>
-	{% endif %}
-
-	<!-- the 'add new album' is the last album-block -->
-	<div class="album-block">
-		<a href="{{url_for('new_album')}}">
-			<h3> <i class="fa fa-plus"></i> Create New Album</h3>
-		</a>
-	</div>
-
+	<!-- footer -->
+	{% include 'partials/footer.html' %}
 </body>
 
 </html>

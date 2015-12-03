@@ -6,46 +6,51 @@
 </head>
 
 <body>
-	<!-- header -->
-	{% include 'partials/headerLogedIn.html' %}
+	<main>
+		<!-- header -->
+		{% include 'partials/headerLogedIn.html' %}
 
-	<div class='row'>
-		<div class="col-3"></div>
+		<!-- main -->
+		<div class='row'>
+			<div class="col-3"></div>
 
-		<!-- FORM FIELDS -->
-		<div class="col-6">
-			<form action="{{ url_for('edit_image', album_id=album_id, image_id=item.id) }}" method='POST' enctype='multipart/form-data'>
+			<!-- FORM FIELDS -->
+			<div class="col-6">
+				<form action="{{ url_for('edit_image', album_id=album_id, image_id=item.id) }}" method='POST' enctype='multipart/form-data'>
 
-					<!-- anti-forgery -->
-					<input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
+						<!-- anti-forgery -->
+						<input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
 
-					<!-- edit name textbox -->
-					<div> 
-						Edit Name:
-					</div>
+						<!-- edit name textbox -->
+						<div> 
+							Edit Name:
+						</div>
 
-					<div>
-						<input type='text' size='30' name='itemName' value="{{item.name}}">
-					</div>
+						<div>
+							<input type='text' size='30' name='itemName' value="{{item.name}}">
+						</div>
 
-					<!-- edit description -->
-					<div>
-						Edit Description:
-					</div>
-					<div>
-						<textarea name='itemText' rows="3">{{item.description}}</textarea>
-					</div>
+						<!-- edit description -->
+						<div>
+							Edit Description:
+						</div>
+						<div>
+							<textarea name='itemText' rows="3">{{item.description}}</textarea>
+						</div>
 
-					<!-- submit/cancel buttons -->
-					<div class='reset' style="width: 200%">
-						<input type='submit' value='Submit' class="dee-button">
-						<a href="{{ url_for('show_images', album_id=album_id) }}" class="dee-button btn-blue">cancel</a>
-					</div>
-			</form>
-		</div> <!-- /.col-6 -->
+						<!-- submit/cancel buttons -->
+						<div class='reset' style="width: 200%">
+							<input type='submit' value='Submit' class="dee-button">
+							<a href="{{ url_for('show_images', album_id=album_id) }}" class="dee-button btn-blue">cancel</a>
+						</div>
+				</form>
+			</div> <!-- /.col-6 -->
 
-		<div class="col-3"></div>
-	</div> <!-- /.row -->
+			<div class="col-3"></div>
+		</div> <!-- /.row -->
+	</main>
+
+	<!-- footer -->
+	{% include 'partials/footer.html' %}
 </body>
-
 </html>

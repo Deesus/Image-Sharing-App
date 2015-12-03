@@ -6,33 +6,37 @@
 </head>
 
 <body>
-	<!-- header -->
-	{% include 'partials/headerLogedIn.html' %}
+	<main>
+		<!-- header -->
+		{% include 'partials/headerLogedIn.html' %}
 
-	<!-- main -->
-	<div class="row" >
-		<div class="col-3"></div>
+		<!-- main -->
+		<div class="row" >
+			<div class="col-3"></div>
 
-		<div class="col-6">
-			<form action="{{ url_for('delete_image', album_id=album.id, image_id=item.id) }}" method='POST'>
-				<!-- anti-forgery -->
-				<input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
-				
-				<div>
-					Are you sure you want to delete <strong>{{item.name}}</strong> from <strong>{{album.name}}</strong>?
-				</div>
+			<div class="col-6">
+				<form action="{{ url_for('delete_image', album_id=album.id, image_id=item.id) }}" method='POST'>
+					<!-- anti-forgery -->
+					<input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
+					
+					<div>
+						Are you sure you want to delete <strong>{{item.name}}</strong> from <strong>{{album.name}}</strong>?
+					</div>
 
-				<!-- submit/cancel buttons -->
-				<div class='reset' style="width: 100%"> 
-					<input type='submit' value='delete' class="dee-button">
-					<a href="{{ url_for('show_images', album_id=album.id) }}" class="dee-button btn-blue">cancel</a>
-				</div>
+					<!-- submit/cancel buttons -->
+					<div class='reset' style="width: 100%"> 
+						<input type='submit' value='delete' class="dee-button">
+						<a href="{{ url_for('show_images', album_id=album.id) }}" class="dee-button btn-blue">cancel</a>
+					</div>
 
-			</form>
-		</div> <!-- /.col-6 -->
+				</form>
+			</div> <!-- /.col-6 -->
 
-		<div class="col-3"></div>
-	</div> <!-- /.row -->
+			<div class="col-3"></div>
+		</div> <!-- /.row -->
+	</main>
+	<!-- footer -->
+	{% include 'partials/footer.html' %}
 </body>
 
 </html>
