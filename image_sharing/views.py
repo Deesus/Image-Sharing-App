@@ -325,6 +325,13 @@ def delete_image(album_id, image_id):
         return render_template('deleteImage.html', album=album, item=item, title='Delete Image')
 
 
+@app.route('/about/', methods=['GET', 'POST'])
+def about():
+    """ Didactic page to inform users of the goal for this project"""
+
+    return render_template('about.html', title='About')
+
+
 # routing for image upload/retrieval:
 # ______________________
 
@@ -339,14 +346,13 @@ def media(album_id, file_name):
 # routing for 404:
 # ______________________
 
-
 @app.errorhandler(404)
 def not_found(error):
     """Renders a propper 404 page"""
 
     # from the Flask api -- `make_response()` is called instead of using a `return`, 
     # resulting in a response object which canbe used to attach headers:
-    response_ = make_response(render_template('404Error.html'), 404)
+    response_ = make_response(render_template('404Error.html', title="404 - Page not found"), 404)
 
     # uncomment and modify to attach a header:
     # response_.headers['foo'] = 'bar'
