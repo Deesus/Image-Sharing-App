@@ -441,6 +441,10 @@ a:hover > .fa-envelope-o {
 	transition: 0.6s ease;
 }
 
+footer a:hover {
+    text-decoration: none;
+}
+
 /* navigation */
 
 nav {
