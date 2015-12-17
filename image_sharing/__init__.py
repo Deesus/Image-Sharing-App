@@ -28,11 +28,12 @@ from flask.ext.seasurf import SeaSurf
     -retrieve JSON info: user may request a JSON output for albums and images.
 
     Quick Start:
-    (See readme for detailed information on setting up the Image Sharing App.)
-    -Setup the SQL database [image_sharing.sql] through Vagrant.
-    -Run script, image_sharing.py from terminal.
+    (See README for detailed information on setting up the Image Sharing App.)
+    -Start vagrant: $ vagrant ssh
+    -Setup the SQL database: $ psql -f image_sharing.sql
+    -Run script: $ python image_sharing.py
 """
-__author__ = ('Dee Reddy', 'eyeofpie@gmail.com')
+__author__ = ('Dee Reddy', 'deesus@yandex.com')
 
 
 #############################################
@@ -67,4 +68,4 @@ import image_sharing.google_oauth
 
 if __name__ == '__main__':
     app.secret_key = 'simple_key'
-    app.run(host='0.0.0.0', port=8000, debug=True)
+    app.run(host='0.0.0.0', port=8000, debug=False)
