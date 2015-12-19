@@ -15,7 +15,7 @@ import shutil
     that will be used by the ORM. There is no need to execute this script.
     Simply run the main module: "image_sharing.py".
 """
-__author__ = ('Dee Reddy', 'eyeofpie@gmail.com')
+__author__ = ('Dee Reddy', 'deesus@yandex.com')
 
 
 #############################################
