@@ -14,7 +14,7 @@ The **Image Sharing App** is a Flask-based web app that that allows users to upl
 5. Then type `vagrant ssh` to log in.
 6. Issue `cd /vagrant`.
 7. Create the database with `psql -f create_database.sql`
-8. Finally, launch the app with `python start_server.py`
+8. Finally, launch the app with `python start_server.py` (listens to port 8000).
 
 ### Usage
 Users must sign in before they can add/edit/delete albums and images. However, they can view any extant albums/images.
@@ -86,6 +86,8 @@ Image-Sharing-App/
 ```
 sudo pip install flask==0.9
 ```
+
+2) Changing the port number (set to 8000) will return an `origin_mismatch` from OAuth providers. You will have to create your own client ID and client secret in the API project console.
 
 ### License
 MIT License. Copyright (c) 2015 Dee Reddy.
