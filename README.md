@@ -1,10 +1,19 @@
 ![app demo](https://raw.githubusercontent.com/Deesus/Image-Sharing-App/master/demo_image.jpg "Image of App")
 
 # Image Sharing App
-###### A similar, but older prototype can be [found here](http://54.186.19.143)
 
 ### Upload and Share Images
 The **Image Sharing App** is a Flask-based web app that that allows users to upload and share images. The app allows users to create public albums; it implements 3-party OAuth2 to give ownership of albums and images to the creators/uploaders. Users can freely access and view images from any album, but only the authorized users may add/edit/delete their own images and albums.
+
+
+### Technologies Used:
+- PostgreSQL
+- Python 2
+- SQLAlchemy
+- Flask
+- Jinja2
+- HTML/CSS
+
 
 ### Installation
 1. If you don't already have Vagrant VM, you can [download it here](https://www.virtualbox.org/wiki/Downloads) and install it on your machine.
